@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
+import { LogoutLink } from "./Logout";
 import { RoutinesNew } from "./RoutinesNew";
 
 export function Content() {
@@ -31,6 +32,7 @@ export function Content() {
       <h1>Welcome to Swoll</h1>
       <Signup />
       <Login />
+      <LogoutLink />
       <RoutinesNew onCreateRoutine={handleCreateRoutine} />
       <ExercisesIndex exercises={exercises} />
     </main>
