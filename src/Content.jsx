@@ -1,6 +1,7 @@
 import { ExercisesIndex } from "./ExercisesIndex";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Signup } from "./Signup";
 
 export function Content() {
   const [exercises, setExercises] = useState([]);
@@ -16,6 +17,7 @@ export function Content() {
   return (
     <main>
       <h1>Welcome to Swoll</h1>
+      <Signup />
       <ExercisesIndex exercises={exercises} />
     </main>
   );
