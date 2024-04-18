@@ -2,6 +2,7 @@ import { ExercisesIndex } from "./ExercisesIndex";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Signup } from "./Signup";
+import { Login } from "./Login";
 
 export function Content() {
   const [exercises, setExercises] = useState([]);
@@ -18,6 +19,7 @@ export function Content() {
     <main>
       <h1>Welcome to Swoll</h1>
       <Signup />
+      <Login />
       <ExercisesIndex exercises={exercises} />
     </main>
   );
