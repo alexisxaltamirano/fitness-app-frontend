@@ -1,3 +1,4 @@
+import Gym from "./assets/Gym.mp4";
 export function Header() {
   return (
     <header>
