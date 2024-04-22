@@ -15,14 +15,13 @@ export function RoutinesNew(props) {
           Routine Title: <input name="name" type="text" />
         </div>
         <div>
-          Exercise:{" "}
-          <select name="exercises">
-            {props.exercises &&
-              props.exercises.map((exercise) => (
-                <option key={exercise.id} value={exercise.name}>
-                  {exercise.name}
-                </option>
-              ))}
+          Exercise:
+          <select name="exercise_id">
+            {props.exercises.map((exercise) => (
+              <option key={exercise.id} value={exercise.id}>
+                {exercise.name}
+              </option>
+            ))}
           </select>
           {/* <input name="exercise_id" type="integer" /> */}
         </div>

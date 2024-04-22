@@ -8,6 +8,7 @@ export function RoutinesIndex(props) {
         <div key={routine.id}>
           <h2>{routine.name}</h2>
           <p>{routine.exercise.name}</p>
+          <p>{routine.reps}</p>
         </div>
       ))}
     </div>
