@@ -6,6 +6,7 @@ import { Login } from "./Login";
 import { LogoutLink } from "./Logout";
 import { RoutinesNew } from "./RoutinesNew";
 import { RoutinesIndex } from "./RoutinesIndex";
+import Video from "./Video";
 
 export function Content() {
   const [exercises, setExercises] = useState([]);
@@ -36,6 +37,7 @@ export function Content() {
   useEffect(handleIndexRoutines, []);
   return (
     <main>
+      <Video />
       <Signup />
       <Login />
       <LogoutLink />
