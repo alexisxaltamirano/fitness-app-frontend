@@ -6,6 +6,7 @@ export function RoutinesNew(props) {
     console.log(params);
     props.onCreateRoutine(params);
     event.target.reset();
+    window.location.href = "/exercises";
   };
   return (
     <div>
@@ -15,20 +16,9 @@ export function RoutinesNew(props) {
           Routine Title: <input name="name" type="text" />
         </div>
         <div>
-          Exercise:
-          <select name="exercise_id">
-            {props.exercises.map((exercise) => (
-              <option key={exercise.id} value={exercise.id}>
-                {exercise.name}
-              </option>
-            ))}
-          </select>
-          {/* <input name="exercise_id" type="integer" /> */}
-        </div>
-        <div>
           Reps: <input name="reps" type="integer" />
         </div>
-        <button type="submit">Create Routine</button>
+        <button type="submit">Add exercises</button>
       </form>
     </div>
   );

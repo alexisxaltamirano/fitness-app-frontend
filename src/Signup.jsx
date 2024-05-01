@@ -30,7 +30,7 @@ export function Signup() {
         ))}
       </ul>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="mb-3">
           Name: <input name="name" type="text" />
         </div>
         <div>
