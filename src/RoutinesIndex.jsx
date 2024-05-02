@@ -7,6 +7,7 @@ export function RoutinesIndex(props) {
   console.log(props);
   const [exercises, setExercises] = useState([]);
   const [routines, setRoutines] = useState([]);
+  const [selectedExercises, setSelectedExercises] = useState([]);
 
   const handleIndexExercises = () => {
     console.log("handleIndexExercises");
@@ -21,6 +22,19 @@ export function RoutinesIndex(props) {
       setRoutines([...routines, response.data]);
     });
   };
+
+  const handleExerciseSelection = (exercise) => {
+    setSelectedExercises((prevSelected) => {
+      const isSelected = prevSelected.some((selected) => selected.id === exercise.id);
+      if (isSelected) {
+        return prevSelected.filter((selected) => selected.id !== exercise.id);
+      } else {
+        return [...prevSelected, exercise];
+      }
+    });
+  };
+
+  const handleAddExerciseToRoutine = () => {};
   useEffect(handleIndexExercises, []);
 
   return (
@@ -35,7 +49,7 @@ export function RoutinesIndex(props) {
               <li key={exercise.id}>{exercise.name}</li>
             ))}
           </ul>
-          <button>Add exercise to this routine</button>
+          <button onClick={handleAddExerciseToRoutine}>Add exercise to this routine</button>
         </div>
       ))}
     </div>

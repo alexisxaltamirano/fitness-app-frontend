@@ -12,15 +12,16 @@ export function Content() {
   const [exercises, setExercises] = useState([]);
   const [routines, setRoutines] = useState([]);
   const [exerciseData, setExerciseData] = useState(null);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [searchFilter, setSearchFilter] = useState("");
+  const [searchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [exercisesPerPage] = useState(6);
 
   useEffect(() => {
     const fetchData = async () => {
       const options = {
         method: "GET",
         url: `https://exercisedb.p.rapidapi.com/exercises`,
-        params: { search: searchQuery, limit: 20 },
+        params: { search: searchQuery, limit: 500 },
         headers: {
           "X-RapidAPI-Key": import.meta.env.VITE_APP_API_KEY,
           "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
@@ -37,17 +38,15 @@ export function Content() {
 
     fetchData();
   }, [searchQuery]); // Empty dependency array ensures useEffect runs only once on component mount
-  const handleSearchChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
 
-  // const handleIndexExercises = () => {
-  //   console.log("handleIndexExercises");
-  //   axios.get("http://localhost:3000/exercises.json").then((response) => {
-  //     console.log(response.data);
-  //     setExercises(response.data);
-  //   });
-  // };
+  // // get current exercise
+  // const indexOfLastExercise = currentPage * exercisesPerPage;
+  // const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
+  // const currentExercise = exercises.slice(indexOfFirstExercise, indexOfLastExercise);
+
+  // // change Page
+  // const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   const handleIndexRoutines = () => {
     console.log("handleIndexRoutines");
     axios.get("http://localhost:3000/routines.json").then((response) => {
@@ -68,6 +67,7 @@ export function Content() {
         <Route path="/exercises" element={<ExerciseIndex exerciseData={exerciseData} />} />
         <Route path="/routines" element={<RoutinesIndex routines={routines} />} />
       </Routes>
+      {/* <Pagination exercisesPerPage={exercisesPerPage} totalExercises={exercises.length} paginate={paginate} /> */}
     </main>
   );
 }
