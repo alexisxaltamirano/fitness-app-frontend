@@ -7,14 +7,15 @@ import { RoutinesIndex } from "./RoutinesIndex";
 import Video from "./Video";
 import { Route, Routes } from "react-router-dom";
 import { ExerciseIndex } from "./ExerciseIndex";
+import { Modal } from "./Modal";
 
 export function Content() {
   const [exercises, setExercises] = useState([]);
   const [routines, setRoutines] = useState([]);
   const [exerciseData, setExerciseData] = useState(null);
   const [searchQuery] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [exercisesPerPage] = useState(6);
+  const [isExerciseShowVisible, setIsExerciseShowVisible] = useState(false);
+  const [currentExercise, setCurrentExercise] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,6 +56,15 @@ export function Content() {
     });
   };
 
+  const handleShowExercise = (exercise) => {
+    setIsExerciseShowVisible(true);
+    setCurrentExercise(exercise);
+  };
+
+  const handleClose = () => {
+    setIsExerciseShowVisible(false);
+  };
+
   // useEffect(handleIndexExercises, []);
   useEffect(handleIndexRoutines, []);
   return (
@@ -64,7 +74,10 @@ export function Content() {
         <Route path="signup" element={<Signup />} />
         <Route path="login" element={<Login />} />
         <Route path="logout" element={<LogoutLink />} />
-        <Route path="/exercises" element={<ExerciseIndex exerciseData={exerciseData} />} />
+        <Route
+          path="/exercises"
+          element={<ExerciseIndex exerciseData={exerciseData} onShowExercise={handleShowExercise} />}
+        />
         <Route path="/routines" element={<RoutinesIndex routines={routines} />} />
       </Routes>
       {/* <Pagination exercisesPerPage={exercisesPerPage} totalExercises={exercises.length} paginate={paginate} /> */}
