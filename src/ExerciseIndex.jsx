@@ -32,8 +32,8 @@ export function ExerciseIndex(props) {
                     <p className="card-title">Body part: {exercise.bodyPart}</p>
                     <p className="card-text">Eqipment: {exercise.equipment}</p>
                     <p className="card-text">Target: {exercise.target}</p>
-                    <p className="card-text">Instructions: {exercise.instructions}</p>
-                    <button onClick={() => handleExerciseSelection(exercise)}>Add exercise to a Routine</button>
+
+                    <button onClick={() => props.onShowExercise(exercise)}>Add exercise to a Routine</button>
                   </div>
                 </div>
               </div> // Adjust this line based on the structure of your response data

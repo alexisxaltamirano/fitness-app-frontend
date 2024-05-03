@@ -8,6 +8,7 @@ import Video from "./Video";
 import { Route, Routes } from "react-router-dom";
 import { ExerciseIndex } from "./ExerciseIndex";
 import { Modal } from "./Modal";
+import { ExerciseShow } from "./ExerciseShow";
 
 export function Content() {
   const [exercises, setExercises] = useState([]);
@@ -57,11 +58,13 @@ export function Content() {
   };
 
   const handleShowExercise = (exercise) => {
+    console.log("handleShowExercise", exercise);
     setIsExerciseShowVisible(true);
     setCurrentExercise(exercise);
   };
 
   const handleClose = () => {
+    console.log("handleClose");
     setIsExerciseShowVisible(false);
   };
 
@@ -80,6 +83,9 @@ export function Content() {
         />
         <Route path="/routines" element={<RoutinesIndex routines={routines} />} />
       </Routes>
+      <Modal show={isExerciseShowVisible} onClose={handleClose}>
+        <ExerciseShow exercise={currentExercise} />
+      </Modal>
       {/* <Pagination exercisesPerPage={exercisesPerPage} totalExercises={exercises.length} paginate={paginate} /> */}
     </main>
   );
