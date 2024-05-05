@@ -1,28 +1,37 @@
-import { RoutinesNew } from "./RoutinesNew";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
-
-/* eslint-disable react/prop-types */
-export function RoutinesIndex(props) {
-  console.log(props);
+export function RoutinesIndex() {
   const [exercises, setExercises] = useState([]);
   const [routines, setRoutines] = useState([]);
   const [selectedExercises, setSelectedExercises] = useState([]);
-
-  const handleIndexExercises = () => {
-    console.log("handleIndexExercises");
-    axios.get("http://localhost:3000/exercises.json").then((response) => {
-      console.log(response.data);
-      setExercises(response.data);
-    });
+  useEffect(() => {
+    // Fetch exercises on component mount
+    axios
+      .get("http://localhost:3000/exercises.json")
+      .then((response) => {
+        setExercises(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching exercises:", error);
+      });
+  }, []);
+  const handleCreateRoutine = () => {
+    // Assuming selected exercises are stored in selectedExercises state
+    const routineExercises = selectedExercises.map((exercise) => ({
+      routine_id: 1,
+      exercise_id: exercise.id,
+    }));
+    // Create routine exercises
+    axios
+      .post("http://localhost:3000/routine_exercises.json", routineExercises)
+      .then((response) => {
+        // Update routines state with the newly created routine exercises
+        setRoutines([...routines, response.data]);
+      })
+      .catch((error) => {
+        console.error("Error creating routine exercises:", error);
+      });
   };
-
-  const handleCreateRoutine = (params) => {
-    axios.post("http://localhost:3000/routines.json", params).then((response) => {
-      setRoutines([...routines, response.data]);
-    });
-  };
-
   const handleExerciseSelection = (exercise) => {
     setSelectedExercises((prevSelected) => {
       const isSelected = prevSelected.some((selected) => selected.id === exercise.id);
@@ -33,25 +42,17 @@ export function RoutinesIndex(props) {
       }
     });
   };
-
-  const handleAddExerciseToRoutine = () => {};
-  useEffect(handleIndexExercises, []);
-
   return (
     <div>
-      <RoutinesNew onCreateRoutine={handleCreateRoutine} exercises={exercises} />
-      <h2>My Routines</h2>
-      {props.routines.map((routine) => (
-        <div key={routine.id}>
-          <h2>{routine.name}</h2>
-          <ul>
-            {routine.exercises.map((exercise) => (
-              <li key={exercise.id}>{exercise.name}</li>
-            ))}
-          </ul>
-          <button onClick={handleAddExerciseToRoutine}>Add exercise to this routine</button>
-        </div>
-      ))}
+      <h2>Select Exercises</h2>
+      <ul>
+        {exercises.map((exercise) => (
+          <li key={exercise.id} onClick={() => handleExerciseSelection(exercise)}>
+            {exercise.name}
+          </li>
+        ))}
+      </ul>
+      <button onClick={handleCreateRoutine}>Create Routine</button>
     </div>
   );
 }

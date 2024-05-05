@@ -13,12 +13,14 @@ export function RoutinesNew(props) {
       <h2>New Routine</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          Routine Title: <input name="name" type="text" />
+          Routine Title: <input className="form-control form-control-sm" name="name" type="text" />
         </div>
         <div>
-          Reps: <input name="reps" type="integer" />
+          Reps: <input className="form-control form-control-sm" name="reps" type="integer" />
         </div>
-        <button type="submit">Add exercises</button>
+        <button className="btn btn-dark" type="submit">
+          Add exercises
+        </button>
       </form>
     </div>
   );

@@ -23,7 +23,7 @@ export function Content() {
       const options = {
         method: "GET",
         url: `https://exercisedb.p.rapidapi.com/exercises`,
-        params: { search: searchQuery, limit: 500 },
+        params: { search: searchQuery, limit: 1000 },
         headers: {
           "X-RapidAPI-Key": import.meta.env.VITE_APP_API_KEY,
           "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
@@ -68,6 +68,24 @@ export function Content() {
     setIsExerciseShowVisible(false);
   };
 
+  const handleAddExerciseToRoutine = (routineId, exerciseId) => {
+    const selectedRoutine = routines.find((routine) => routine.id === routineId);
+    if (selectedRoutine) {
+      const isExerciseAlreadyAdded = selectedRoutine.exercises.some((exercise) => exercise.id === exerciseId);
+      if (!isExerciseAlreadyAdded) {
+        const exerciseDetails = exercises.find((exercise) => exercise.id === exerciseId);
+        if (exerciseDetails) {
+          const updatedRoutine = { ...selectedRoutine };
+          updatedRoutine.exercises.push({ id: exerciseId, name: exerciseDetails.name });
+          setRoutines((prevRoutines) =>
+            prevRoutines.map((routine) => (routine.id === routineId ? updatedRoutine : routine))
+          );
+        }
+        console.log("Adding exercise", exerciseId, "to routine", routineId);
+      }
+    }
+  };
+
   // useEffect(handleIndexExercises, []);
   useEffect(handleIndexRoutines, []);
   return (
@@ -84,7 +102,11 @@ export function Content() {
         <Route path="/routines" element={<RoutinesIndex routines={routines} />} />
       </Routes>
       <Modal show={isExerciseShowVisible} onClose={handleClose}>
-        <ExerciseShow exercise={currentExercise} />
+        <ExerciseShow
+          exercise={currentExercise}
+          routines={routines}
+          onAddExerciseToRoutine={handleAddExerciseToRoutine}
+        />
       </Modal>
       {/* <Pagination exercisesPerPage={exercisesPerPage} totalExercises={exercises.length} paginate={paginate} /> */}
     </main>

@@ -23,27 +23,42 @@ export function Signup() {
 
   return (
     <div id="signup">
-      <h1>Signup</h1>
       <ul>
         {errors.map((error) => (
           <li key={error}>{error}</li>
         ))}
       </ul>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          Name: <input name="name" type="text" />
+      <div className="login template d-flex justify-content-center align-items-center 100-w vh-100 bg-dark">
+        <div className="40-w p-5 rounded bg-light">
+          <form onSubmit={handleSubmit}>
+            <h1 className="text-center">Sign In</h1>
+            <div className="mb-2">
+              <label htmlFor="name">Name</label>
+              <input name="name" type="text" placeholder="Enter Name" className="form-control" />
+            </div>
+            <div className="mb-2">
+              <label htmlFor="email">Email</label>
+              <input name="email" type="email" placeholder="name@example.com" className="form-control" />
+            </div>
+            <div className="mb-2">
+              <label htmlFor="password">Password</label>
+              <input name="password" type="password" placeholder="Enter Password" className="form-control" />
+            </div>
+            <div className="mb-2">
+              <label htmlFor="password_confrimation">Password Confirmation</label>
+              <input
+                name="password_confirmation"
+                type="password"
+                placeholder="Re-Enter Password"
+                className="form-control"
+              />
+            </div>
+            <button className="btn btn-dark" type="submit">
+              Signup
+            </button>
+          </form>
         </div>
-        <div>
-          Email: <input name="email" type="email" />
-        </div>
-        <div>
-          Password: <input name="password" type="password" />
-        </div>
-        <div>
-          Password confirmation: <input name="password_confirmation" type="password" />
-        </div>
-        <button type="submit">Signup</button>
-      </form>
+      </div>
     </div>
   );
 }

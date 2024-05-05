@@ -30,21 +30,31 @@ export function Login() {
 
   return (
     <div id="login">
-      <h1>Login</h1>
       <ul>
         {errors.map((error) => (
           <li key={error}>{error}</li>
         ))}
       </ul>
-      <form onSubmit={handleSubmit}>
-        <div>
-          Email: <input name="email" type="email" />
+      <div className="login template d-flex justify-content-center align-items-center  vh-100 bg-dark">
+        <div className="form-container p-5 rounded bg-light">
+          <form onSubmit={handleSubmit}>
+            <h1 className="text-center">Login</h1>
+            <div className="mb-2">
+              <label htmlFor="email">Email</label>
+              <input name="email" type="email" placeholder="name@example.com" className="form-control" />
+            </div>
+            <div className="mb-2">
+              <label htmlFor="password">Password</label>
+              <input name="password" type="password" placeholder="Password" className="form-control" />
+            </div>
+            <div className="d-grid">
+              <button className="btn btn-dark" type="submit">
+                Login
+              </button>
+            </div>
+          </form>
         </div>
-        <div>
-          Password: <input name="password" type="password" />
-        </div>
-        <button type="submit">Login</button>
-      </form>
+      </div>
     </div>
   );
 }
