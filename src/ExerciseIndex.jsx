@@ -5,10 +5,6 @@ export function ExerciseIndex(props) {
   console.log(props);
   const [searchFilter, setSearchFilter] = useState("");
 
-  const handleExerciseSelection = (exercise) => {
-    props.onExerciseSelect(exercise);
-  };
-
   return (
     props.exerciseData && (
       <div className="exercise bg-dark">
@@ -18,7 +14,7 @@ export function ExerciseIndex(props) {
           </div>
           <input
             type="text"
-            placeholder="Search by Exercise Name"
+            placeholder="Search by Body Part"
             className="search form-control"
             value={searchFilter}
             onChange={(event) => setSearchFilter(event.target.value)}

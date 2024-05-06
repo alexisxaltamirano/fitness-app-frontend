@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 export function ExerciseShow(props) {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("helloooooo");
-    const formData = new FormData(event.target);
-    const exerciseId = formData.get("exercise_id");
-    props.onAddToRoutine(props.routineId, exerciseId);
-  };
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   console.log("helloooooo");
+  //   const formData = new FormData(event.target);
+  //   const exerciseId = formData.get("exercise_id");
+  //   props.onAddToRoutine(props.routineId, exerciseId);
+  // };
 
   return (
     <div>

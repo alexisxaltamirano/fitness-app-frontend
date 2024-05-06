@@ -35,7 +35,7 @@ export function Login() {
           <li key={error}>{error}</li>
         ))}
       </ul>
-      <div className="login template d-flex justify-content-center align-items-center  vh-100 bg-dark">
+      <div className="login template d-flex justify-content-center align-items-center  vh-100 bg-secondary">
         <div className="form-container p-5 rounded bg-light">
           <form onSubmit={handleSubmit}>
             <h1 className="text-center">Login</h1>

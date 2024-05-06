@@ -11,7 +11,7 @@ import { Modal } from "./Modal";
 import { ExerciseShow } from "./ExerciseShow";
 
 export function Content() {
-  const [exercises, setExercises] = useState([]);
+  const [exercises] = useState([]);
   const [routines, setRoutines] = useState([]);
   const [exerciseData, setExerciseData] = useState(null);
   const [searchQuery] = useState("");
