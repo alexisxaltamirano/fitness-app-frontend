@@ -26,3 +26,7 @@ Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Preview
+![swoll main page 1](https://github.com/alexisxaltamirano/fitness-app-frontend/assets/156473596/3b994c26-e476-4a65-9217-72bfadad682f)
+![swoll exercises](https://github.com/alexisxaltamirano/fitness-app-frontend/assets/156473596/884c04a0-b99f-46c7-b199-17dd4c97cb7a)
+![swoll modal](https://github.com/alexisxaltamirano/fitness-app-frontend/assets/156473596/bf7c0f76-f370-4fdd-8d8d-342155016301)
