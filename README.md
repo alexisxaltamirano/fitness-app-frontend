@@ -1,4 +1,4 @@
-# Swoll
+# Swoll Fitness Web App
 
 - Welcome to Swoll! This web application is designed to help users maintain their fitness routines with ease. Whether you're a seasoned athlete or just starting your fitness journey, this app provides a user-friendly platform to access a variety of exercises and create personalized workout routines.
 
