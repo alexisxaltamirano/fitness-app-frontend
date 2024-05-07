@@ -7,7 +7,7 @@
  - Custom Workout Routines: Create and customize your workout routines tailored to your fitness goals.
  - Search Functionality: Easily find specific exercises or routines using the built-in search feature.
  - User Authentication: Securely manage your profile and workout data with user authentication.
- - Exercise Categorization: Browse exercises conveniently categorized by type, difficulty, and equipment required.
+ 
    
 # Technologies Used
  - Backend: Ruby, Ruby on Rails
@@ -16,6 +16,7 @@
 
 # Future Enhancements
  - Routines: Allow users to add multiple exercises to a routine for better workout planning.
+ - Exercise Categorization: Browse exercises conveniently categorized by type, difficulty, and equipment required.
  - Enhanced Analytics: Incorporate advanced analytics to track workout progress and performance.
  - Social Integration: Enable users to share workout achievements and progress with friends.
    
