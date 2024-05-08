@@ -201,3 +201,17 @@ footer {
   text-align: center;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.pagination .page-link {
+  font-size: 14px;
+  padding: 5px 10px;
+}
+
+.pagination .page-item {
+  margin: 0 5px;
+}
+

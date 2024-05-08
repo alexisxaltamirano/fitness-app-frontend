@@ -19,6 +19,19 @@ export function ExerciseIndex(props) {
     setCurrentPage(pageNumber);
     window.scrollTo(0, 0);
   };
+
+  // Logic to render page numbers
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(props.exerciseData.length / exercisesPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
+  // Logic to render limited page numbers based on current page
+  const renderPageNumbers = pageNumbers.slice(
+    Math.max(currentPage - 2, 0),
+    Math.min(currentPage + 3, pageNumbers.length)
+  );
+
   return (
     props.exerciseData && (
       <div className="exercise bg-dark">
@@ -58,13 +71,29 @@ export function ExerciseIndex(props) {
           </div>
 
           <ul className="pagination">
-            {[...Array(Math.ceil(props.exerciseData.length / exercisesPerPage)).keys()].map((pageNumber) => (
-              <li key={pageNumber} className="page-item">
-                <button className="page-link" onClick={() => paginate(pageNumber + 1)}>
-                  {pageNumber + 1}
+            <li className="page-item">
+              <button className="page-link" onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}>
+                Previous
+              </button>
+            </li>
+
+            {renderPageNumbers.map((number) => (
+              <li key={number} className={`page-item ${number === currentPage ? "active" : ""}`}>
+                <button className="page-link" onClick={() => paginate(number)}>
+                  {number}
                 </button>
               </li>
             ))}
+            {/* Render Next button */}
+            <li className="page-item">
+              <button
+                className="page-link"
+                onClick={() => paginate(currentPage + 1)}
+                disabled={currentPage === Math.ceil(props.exerciseData.length / exercisesPerPage)}
+              >
+                Next
+              </button>
+            </li>
           </ul>
         </div>
       </div>
