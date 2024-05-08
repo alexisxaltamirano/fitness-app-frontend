@@ -4,7 +4,21 @@ import { useState } from "react";
 export function ExerciseIndex(props) {
   console.log(props);
   const [searchFilter, setSearchFilter] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [exercisesPerPage] = useState(20);
 
+  // Logic to paginate the exercise data
+  const indexOfLastExercise = Math.min(currentPage * exercisesPerPage, props.exerciseData.length);
+  const indexOfFirstExercise = Math.max(indexOfLastExercise - exercisesPerPage, 0);
+  const currentExercises = props.exerciseData
+    .filter((exercise) => exercise.bodyPart.toLowerCase().includes(searchFilter.toLocaleLowerCase()))
+    .slice(indexOfFirstExercise, indexOfLastExercise);
+
+  // Logic to paginate through pages
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo(0, 0);
+  };
   return (
     props.exerciseData && (
       <div className="exercise bg-dark">
@@ -26,7 +40,7 @@ export function ExerciseIndex(props) {
             ))}
           </datalist>
           <div className="row row-cols-1 row-cols-md-3 g-4">
-            {props.exerciseData
+            {currentExercises
               .filter((exercise) => exercise.bodyPart.toLowerCase().includes(searchFilter.toLocaleLowerCase()))
               .map((exercise) => (
                 <div key={exercise.id} className="col">
@@ -42,6 +56,16 @@ export function ExerciseIndex(props) {
                 </div> // Adjust this line based on the structure of your response data
               ))}
           </div>
+
+          <ul className="pagination">
+            {[...Array(Math.ceil(props.exerciseData.length / exercisesPerPage)).keys()].map((pageNumber) => (
+              <li key={pageNumber} className="page-item">
+                <button className="page-link" onClick={() => paginate(pageNumber + 1)}>
+                  {pageNumber + 1}
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     )

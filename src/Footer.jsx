@@ -10,39 +10,33 @@ export function Footer() {
     <footer>
       <div className="footerContainer">
         <div className="socialIcons">
-          <a href="">
-            <i className="fa-brands fa-facebook"></i>
+          <a href="https://github.com/alexisxaltamirano">
+            <i className="fa-brands fa-github"></i>
           </a>
-          <a href="">
-            <i className="fa-brands fa-instagram"></i>
-          </a>
-          <a href="">
-            <i className="fa-brands fa-twitter"></i>
-          </a>
-          <a href="">
-            <i className="fa-brands fa-google-plus"></i>
-          </a>
-          <a href="">
-            <i className="fa-brands fa-youtube"></i>
+          <a href="https://www.linkedin.com/in/alexisxaltamirano/">
+            <i className="fa-brands fa-linkedin"></i>
           </a>
         </div>
         <div className="footerNav">
           <ul>
             <li>
-              <a href="">Home</a>
+              <a href="/">Home</a>
             </li>
             <li>
-              <a href="">Exercises</a>
+              <a href="/exercises">Exercises</a>
             </li>
             <li>
-              <a href="">Login</a>
+              <a href="/signup">Signup</a>
+            </li>
+            <li>
+              <a href="/login">Login</a>
             </li>
           </ul>
         </div>
       </div>
       <div className="footerBottom">
         <p>
-          Copyright &copy;2024; Designed by <span className="designer">Alex</span>
+          Copyright &copy;2024; Designed by <span className="designer">Alexis Altamirano</span>
         </p>
       </div>
     </footer>

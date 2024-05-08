@@ -9,37 +9,35 @@ import { Route, Routes } from "react-router-dom";
 import { ExerciseIndex } from "./ExerciseIndex";
 import { Modal } from "./Modal";
 import { ExerciseShow } from "./ExerciseShow";
+// import exerciseCategory from "./ExerciseCategory";
 
 export function Content() {
   const [exercises] = useState([]);
   const [routines, setRoutines] = useState([]);
-  const [exerciseData, setExerciseData] = useState(null);
+  const [exerciseData, setExerciseData] = useState([]);
   const [searchQuery] = useState("");
   const [isExerciseShowVisible, setIsExerciseShowVisible] = useState(false);
   const [currentExercise, setCurrentExercise] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
-      const options = {
-        method: "GET",
-        url: `https://exercisedb.p.rapidapi.com/exercises`,
-        params: { search: searchQuery, limit: 1000 },
-        headers: {
-          "X-RapidAPI-Key": import.meta.env.VITE_APP_API_KEY,
-          "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
-        },
-      };
-
       try {
-        const response = await axios.request(options);
+        const response = await axios.get("https://exercisedb.p.rapidapi.com/exercises", {
+          params: { search: searchQuery, limit: 1000 },
+          headers: {
+            "X-RapidAPI-Key": import.meta.env.VITE_APP_API_KEY,
+            "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
+          },
+        });
         setExerciseData(response.data);
       } catch (error) {
-        console.error(error);
+        console.error("Error fetching exercises:", error);
       }
     };
 
     fetchData();
-  }, [searchQuery]); // Empty dependency array ensures useEffect runs only once on component mount
+  }, [searchQuery]);
+  // Empty dependency array ensures useEffect runs only once on component mount
 
   // // get current exercise
   // const indexOfLastExercise = currentPage * exercisesPerPage;
@@ -108,7 +106,6 @@ export function Content() {
           onAddExerciseToRoutine={handleAddExerciseToRoutine}
         />
       </Modal>
-      {/* <Pagination exercisesPerPage={exercisesPerPage} totalExercises={exercises.length} paginate={paginate} /> */}
     </main>
   );
 }
