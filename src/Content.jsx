@@ -9,7 +9,6 @@ import { Route, Routes } from "react-router-dom";
 import { ExerciseIndex } from "./ExerciseIndex";
 import { Modal } from "./Modal";
 import { ExerciseShow } from "./ExerciseShow";
-// import exerciseCategory from "./ExerciseCategory";
 
 export function Content() {
   const [exercises] = useState([]);
@@ -37,15 +36,6 @@ export function Content() {
 
     fetchData();
   }, [searchQuery]);
-  // Empty dependency array ensures useEffect runs only once on component mount
-
-  // // get current exercise
-  // const indexOfLastExercise = currentPage * exercisesPerPage;
-  // const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
-  // const currentExercise = exercises.slice(indexOfFirstExercise, indexOfLastExercise);
-
-  // // change Page
-  // const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const handleIndexRoutines = () => {
     console.log("handleIndexRoutines");
@@ -84,7 +74,6 @@ export function Content() {
     }
   };
 
-  // useEffect(handleIndexExercises, []);
   useEffect(handleIndexRoutines, []);
   return (
     <main>

@@ -23,9 +23,6 @@ export function Header() {
             <Link to="/" className="nav-item nav-link active">
               Home <span className="sr-only">(current)</span>
             </Link>
-            {/* <Link to="/routines" className="nav-item nav-link">
-              Routines
-            </Link> */}
             <Link to="/exercises" className="nav-item nav-link">
               Exercises
             </Link>

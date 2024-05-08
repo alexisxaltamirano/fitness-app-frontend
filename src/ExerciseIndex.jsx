@@ -5,7 +5,7 @@ export function ExerciseIndex(props) {
   console.log(props);
   const [searchFilter, setSearchFilter] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [exercisesPerPage] = useState(20);
+  const [exercisesPerPage] = useState(15);
 
   // Logic to paginate the exercise data
   const indexOfLastExercise = Math.min(currentPage * exercisesPerPage, props.exerciseData.length);
@@ -66,7 +66,7 @@ export function ExerciseIndex(props) {
                       </button>
                     </div>
                   </div>
-                </div> // Adjust this line based on the structure of your response data
+                </div>
               ))}
           </div>
 
